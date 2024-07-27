@@ -40,21 +40,20 @@ To Convert to 1NF:
 
 ## Second Normal Form (2NF)
 
-2. Second Normal Form (2NF)
 Definition: A table is in 2NF if:
-
-It is in 1NF.
-All non-key attributes are fully functional dependent on the primary key.
+- It is in 1NF.
+- All non-key attributes are fully functional dependent on the primary key.
 
 To understand 2NF, we need to understand functional dependencies, particularly partial dependencies.
 
-Functional Dependency
+### Functional Dependency
 A functional dependency occurs when one attribute uniquely determines another attribute. For example, if we know a student's ID, we can determine their name.
 
-Partial Dependency
+### Partial Dependency
 A partial dependency occurs when a non-key attribute is functionally dependent on part of a composite key (but not the whole key). This situation arises only when the primary key is composite (consisting of two or more columns).
 
 Example:
+
 If the primary key is a composite key, each non-key attribute must depend on the whole key, not just part of it.
 
 ```
@@ -69,7 +68,6 @@ If the primary key is a composite key, each non-key attribute must depend on the
 
 
 ### Analysis for 2NF
-Partial Dependencies:
 
 Instructor depends on CourseID, not on the whole composite key (StudentID, CourseID).
 CourseName depends on CourseID, not on the whole composite key (StudentID, CourseID).
