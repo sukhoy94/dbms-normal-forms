@@ -38,7 +38,7 @@ To Convert to 1NF:
 | 2         | Bob   | Science  |
 ```
 
-## Second Normal Form (2NF)
+## 2. Second Normal Form (2NF)
 
 Definition: A table is in 2NF if:
 - It is in 1NF.
