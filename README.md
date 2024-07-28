@@ -98,3 +98,59 @@ Student-Course Table: The StudentID and CourseID together form the composite pri
 Course Table: The CourseID is now the primary key, and Instructor and CourseName are fully functionally dependent on CourseID, eliminating partial dependencies.
 
 By decomposing the original table into these two tables, we ensure that every non-key attribute is fully functionally dependent on the entire primary key in each table. This decomposition achieves Second Normal Form (2NF), reducing redundancy and ensuring data integrity.
+
+
+## 3. Third normal form
+
+The Third Normal Form (3NF) is a database normalization level used to reduce data redundancy and ensure data integrity. A table is in 3NF if:
+
+- It is in Second Normal Form (2NF).
+- All the attributes are functionally dependent only on the primary key and nothing else (i.e., there are no transitive dependencies).
+
+Example:
+
+
+Consider a table storing information about employees, departments, and the location of the departments:
+```
+| EmployeeID | EmployeeName | DepartmentID | DepartmentName | DepartmentLocation |
+|------------|--------------|--------------|----------------|--------------------|
+| 1          | John         | D01          | HR             | New York           |
+| 2          | Jane         | D02          | IT             | San Francisco      |
+| 3          | Bob          | D01          | HR             | New York           |
+| 4          | Alice        | D03          | Finance        | Chicago            |
+```
+
+In this table:
+
+- The primary key is EmployeeID.
+- DepartmentName and DepartmentLocation are non-key attributes.
+
+Dependencies:
+
+- EmployeeName depends on EmployeeID.
+- DepartmentName depends on DepartmentID.
+- DepartmentLocation depends on DepartmentID.
+- DepartmentID determines DepartmentName and DepartmentLocation, so there is a transitive dependency: EmployeeID -> DepartmentID -> DepartmentName and DepartmentLocation.
+- This table is in 2NF but not in 3NF because of the transitive dependencies.
+
+To achieve 3NF, we need to eliminate the transitive dependencies by creating separate tables for employees and departments.
+
+```
+employee table
+
+| EmployeeID | EmployeeName | DepartmentID |
+|------------|--------------|--------------|
+| 1          | John         | D01          |
+| 2          | Jane         | D02          |
+| 3          | Bob          | D01          |
+| 4          | Alice        | D03          |
+
+department table
+
+| DepartmentID | DepartmentName | DepartmentLocation |
+|--------------|----------------|--------------------|
+| D01          | HR             | New York           |
+| D02          | IT             | San Francisco      |
+| D03          | Finance        | Chicago            |
+
+```
